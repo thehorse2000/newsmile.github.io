@@ -391,7 +391,7 @@
 					<div class="row d-flex justify-content-end align-items-center">
 						<div data-aos="fade-down" data-aos-duration="1500" class="col-lg-6 col-md-12 about-left no-padding">
 							<div class="embed-responsive embed-responsive-16by9">
-								<video muted loop preload="metadata">
+								<video id="cadcam-video" muted loop preload="metadata">
 									<source src="videos/cadcam.m4v" type="video/mp4">
 									Your browser does not support the HTML5 video tag.
 								</video>
@@ -686,29 +686,29 @@
 					$("#aboutCarousel").carousel({
 						interval: false
 					});
-                    // // Get media - with autoplay disabled (audio or video)
-                    // var media = $('video').not("[autoplay='autoplay']");
-                    // var tolerancePixel = 70;
+                    // Get media - with autoplay disabled (audio or video)
+                    var media = $('#cadcam-video');
+                    var tolerancePixel = 70;
 
-                    // function checkMedia(){
-                    //     // Get current browser top and bottom
-                    //     var scrollTop = $(window).scrollTop() + tolerancePixel;
-                    //     var scrollBottom = $(window).scrollTop() + $(window).height() - tolerancePixel;
+                    function checkMedia(){
+                        // Get current browser top and bottom
+                        var scrollTop = $(window).scrollTop() + tolerancePixel;
+                        var scrollBottom = $(window).scrollTop() + $(window).height() - tolerancePixel;
 
-                    //     media.each(function(index, el) {
-                    //         var yTopMedia = $(this).offset().top;
-                    //         var yBottomMedia = $(this).height() + yTopMedia;
+                        media.each(function(index, el) {
+                            var yTopMedia = $(this).offset().top;
+                            var yBottomMedia = $(this).height() + yTopMedia;
 
-                    //         if(scrollTop < yBottomMedia && scrollBottom > yTopMedia){ //view explaination in `In brief` section above
-                    //             $(this).get(0).play();
-                    //         } else {
-                    //             $(this).get(0).pause();
-                    //         }
-                    //     });
+                            if(scrollTop < yBottomMedia && scrollBottom > yTopMedia){ //view explaination in `In brief` section above
+                                $(this).get(0).play();
+                            } else {
+                                $(this).get(0).pause();
+                            }
+                        });
 
-                    //     //}
-                    // }
-                    // $(document).on('scroll', checkMedia);
+                        //}
+                    }
+                    $(document).on('scroll', checkMedia);
 
 				});
 
